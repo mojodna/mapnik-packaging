@@ -2,7 +2,7 @@
 
 source ./settings.sh
 
-[ ! -d mapnik ] && git clone https://github.com/mapnik/mapnik -b 2.3.x
+[ ! -d mapnik ] && git clone git://github.com/mapnik/mapnik -b 2.3.x
 cd mapnik
 ./configure \
   PREFIX=$PREFIX \

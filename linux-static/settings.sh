@@ -4,8 +4,8 @@ set -o pipefail
 set -e
 set -x
 
-export CFLAGS="-O3 -fPIC -Wno-unused-but-set-variable"
-export CXXFLAGS="-O3 -fPIC -Wno-unused-but-set-variable"
+export CFLAGS="-O3 -fPIC"
+export CXXFLAGS="-O3 -fPIC"
 export LDFLAGS="-O3"
 export LIBRARY_PATH="$PREFIX/lib:$LIBRARY_PATH"
 export CPATH="$PREFIX/include:$CPATH"

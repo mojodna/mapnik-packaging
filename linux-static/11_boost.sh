@@ -9,7 +9,7 @@ cd boost_1_55_0/
   --with-icu=$PREFIX
 ./b2 -d2 \
   linkflags="$LDFLAGS -L$PREFIX/lib -Bstatic -licudata -Bstatic -licuuc -Bdynamic -ldl" \
-  cxxflags="$CXXFLAGS -I$PREFIX/include -fPIC -Wno-unused-but-set-variable -DU_STATIC_IMPLEMENTATION=1" \
+  cxxflags="$CXXFLAGS -I$PREFIX/include -fPIC -DU_STATIC_IMPLEMENTATION=1" \
   --prefix=$PREFIX \
   --with-thread \
   --with-filesystem \
@@ -25,7 +25,7 @@ cd boost_1_55_0/
   stage -a
 ./b2 -d2 \
   linkflags="$LDFLAGS -L$PREFIX/lib -Bstatic -licudata -Bstatic -licuuc -Bdynamic -ldl" \
-  cxxflags="$CXXFLAGS -I$PREFIX/include -fPIC -Wno-unused-but-set-variable -DU_STATIC_IMPLEMENTATION=1" \
+  cxxflags="$CXXFLAGS -I$PREFIX/include -fPIC -DU_STATIC_IMPLEMENTATION=1" \
   --prefix=$PREFIX \
   --with-thread \
   --with-filesystem \

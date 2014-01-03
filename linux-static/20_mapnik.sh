@@ -8,7 +8,8 @@ cd mapnik
   PREFIX=$PREFIX \
   LINKING=static \
   RUNTIME_LINK=static \
-  INPUT_PLUGINS=none \
+  INPUT_PLUGINS=csv,geojson \
+  PLUGIN_LINKING=static \
   FAST=yes \
   PNG=no \
   JPEG=no \

@@ -3,8 +3,12 @@
 set -e
 set -x
 
-sudo add-apt-repository ppa:chris-lea/node.js
-sudo apt-get update
-sudo apt-get install -y pkg-config build-essential git-core nodejs
+if type apt-get > /dev/null 2>&1; then
+  add-apt-repository ppa:chris-lea/node.js
+  apt-get update
+  apt-get install -y pkg-config build-essential git-core nodejs
+fi
 
-yum install pkgconfig kernel-devel -y
+if type yum >/dev/null 2>&1; then
+  yum install curl make gcc gcc-c++ diffutils file pkgconfig -y
+fi

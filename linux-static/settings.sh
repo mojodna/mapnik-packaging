@@ -1,4 +1,4 @@
-PREFIX=$HOME/src/mapnik-sdk
+PREFIX=/tmp/mapnik-sdk
 
 set -o pipefail
 set -e

@@ -1,10 +1,9 @@
 #!/bin/bash
 
-source ./settings.sh
+basedir=$(dirname $0)
+source $basedir/settings.sh
 
-[ ! -f boost_1_55_0.tar.gz ] && curl -L "http://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost%2Ffiles%2Fboost%2F1.55.0%2F&ts=1387606595&use_mirror=softlayer-ams" -o boost_1_55_0.tar.gz -C -
-[ ! -d boost_1_55_0 ] && tar zxf boost_1_55_0.tar.gz
-cd boost_1_55_0/
+cd $basedir/boost_*/
 ./bootstrap.sh \
   --with-icu=$PREFIX
 ./b2 -d2 \

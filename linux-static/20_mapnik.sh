@@ -1,9 +1,9 @@
 #!/bin/bash
 
-source ./settings.sh
+basedir=$(dirname $0)
+source $basedir/settings.sh
 
-[ ! -d mapnik ] && git clone git://github.com/mapnik/mapnik -b 2.3.x
-cd mapnik
+cd $basedir/mapnik-*/
 ./configure \
   PREFIX=$PREFIX \
   LINKING=static \

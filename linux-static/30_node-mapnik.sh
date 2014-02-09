@@ -1,8 +1,10 @@
 #!/bin/bash
 
-source ./settings.sh
+basedir=$(dirname $0)
+source $basedir/settings.sh
 
-[ ! -d node-mapnik ] && git clone git://github.com/mapnik/node-mapnik
-cd node-mapnik
+export PATH=$PATH:/tmp/node-v0.10.25-linux-x64/bin
+
+cd $basedir/mapnik-node-mapnik-*/
 sed -i 's/shared/static/' binding.gyp
 npm install --unsafe-perm

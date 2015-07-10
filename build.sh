@@ -54,6 +54,7 @@ function teardown {
 function upgrade_gcc {
     if [[ $(lsb_release --id) =~ "Ubuntu" ]]; then
         echo "adding gcc-4.8 ppa"
+        sudo apt-get install -y software-properties-common
         sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
     fi
     echo "updating apt"
@@ -70,6 +71,7 @@ function upgrade_clang {
     CLANG_VERSION="3.5"
     if [[ $(lsb_release --id) =~ "Ubuntu" ]]; then
         echo "adding clang + gcc-4.8 ppa"
+        sudo apt-get install -y software-properties-common
         sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
         if [[ $(lsb_release --release) =~ "12.04" ]]; then
            sudo add-apt-repository "deb http://llvm.org/apt/precise/ llvm-toolchain-precise-${CLANG_VERSION} main"
@@ -160,7 +162,7 @@ function upgrade_compiler {
 function prep_linux {
   cd osx
   echo "installing build tools"
-  sudo apt-get install -qq -y curl build-essential git cmake zlib1g-dev unzip make libtool autotools-dev automake realpath autoconf ragel
+  sudo apt-get install -qq -y curl build-essential git cmake zlib1g-dev unzip make libtool autotools-dev automake realpath autoconf ragel pkg-config python
   if [[ "${MASON_PLATFORM:-false}" != false ]]; then
       source ${MASON_PLATFORM}.sh
   else
@@ -240,6 +242,11 @@ function build_mapnik {
     b ./scripts/build_expat.sh
     b ./scripts/build_postgres.sh
     if [[ "${MINIMAL_MAPNIK:-false}" == false ]]; then
+      if [[ ${UNAME} == 'Linux' ]]; then
+        sudo apt-get install -qq -y xutils-dev # for gccmakedep used in openssl
+      fi
+      b ./scripts/build_openssl.sh
+      b ./scripts/build_curl.sh
       b ./scripts/build_gdal.sh
       b ./scripts/build_pixman.sh
       b ./scripts/build_cairo.sh

@@ -179,7 +179,7 @@ ${FGDB_ARGS} \
 --with-spatialite=${BUILD_WITH_SPATIALITE} \
 --with-geos=${BUILD_WITH_GEOS} \
 --with-sqlite3=no \
---with-curl=no \
+--with-curl=yes \
 --with-pcraster=no \
 --with-cfitsio=no \
 --with-odbc=no \
